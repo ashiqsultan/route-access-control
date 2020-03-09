@@ -36,45 +36,27 @@ const roleName = new Role('role-name');
 
 **Example**
 
-The below route will only allow users with role admin
-
+The below route will only allow users with **role admin**
 ```
-
 router.post('/protected', [checkJwt, checkRole(admin)], async (req, res, next) => {
-
-try {
-
-res.json('This is a protected route');
-
-} catch (error) {
-
-next(error);
-
-}
-
+	try {
+		res.json('This is a protected route');
+	} catch (error) {
+		next(error);
+	}
 });
-
 ```
 
-  
-
-The below route will allow users with role admin or teacher
-
+The below route will allow users with **role admin or teacher**
 ```
-
 router.post('/protected', [checkJwt, checkRole(admin, teacher)], async (req, res, next) => {
-
-try {
-
-res.json('This is a protected route');
-
-} catch (error) {
-
-next(error);
-
-}
-
+	try {
+		res.json('This is a protected route');
+	} catch (error) {
+		next(error);
+	}
 });
+
 ```
 ### Function :`isRoleAuthorized()`
 Use this inside your route handler
@@ -82,39 +64,22 @@ Use this inside your route handler
 
 *  `isRoleAuthorized(requesterRole, arrayOfAllowedRoles)`
 
-
-  
-
 **Example**
 
 ```
-
-router.post('/private', checkJwt, async (req, res, next) => {
-
-try {
-
-const requesterRole = req.role;
-
-const allowedRoles = [admin, teacher];
-
-if (await isRoleAuthorized(claimedRole, allowedRoles)) {
-
-res.json('This is private route');
-
-} else {
-
-const message = 'User not authorized';
-
-res.status(401).json({ message });
-
-}
-
-} catch (error) {
-
-next(error);
-
-}
-
-};
-
+router.post('/protected', checkJwt, async (req, res, next) => {
+	try {
+		const claimedRole = req.role;
+		const allowedRoles = [admin];
+		const isAuthorized = await isRoleAuthorized(claimedRole, allowedRoles);
+		if (isAuthorized) {
+			res.json('This is private route');
+		} else {
+			const message = 'User not authorized';
+			res.status(401).json({ message });
+		}
+	} catch (error) {
+		next(error);
+	}
+});
 ```
