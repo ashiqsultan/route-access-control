@@ -26,7 +26,6 @@ const checkRole = (...allowedRoles) => {
 	return async (req, res, next) => {
 		try {
 			const results = await rolesChecker(req.role, allowedRoles);
-			console.log(results);
 			results.includes(true) ? next() : sendUnauthorized(res);
 		} catch (error) {
 			next(error);
