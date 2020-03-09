@@ -18,13 +18,13 @@ const roleName = new Role('role-name');
 
 ## Check Role
 
-**There are two ways to authenticate roles**
-1. Authenticating in Middleware using  `checkRole`
-2. Authenticating inside route handler function using `isRoleAuthorized`
+**There are two ways to authorize roles**
+1. Authorizing in the Middleware using  `checkRole`
+2. Authorizing inside route handler function using `isRoleAuthorized`
 
   
 
-### Middleware:  `checkRole`
+## 1. Middleware:  `checkRole`
 
 **The middleware expects the claimed role to be inside req.role**
 
@@ -58,7 +58,7 @@ router.post('/protected', [checkJwt, checkRole(admin, teacher)], async (req, res
 });
 
 ```
-### Function :`isRoleAuthorized()`
+## 2. Function :`isRoleAuthorized()`
 Use this inside your route handler
 * Returns a boolean
 
