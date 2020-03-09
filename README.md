@@ -7,7 +7,6 @@ This module is used to implement role based access to API endpoints.
 Create a new role
 
 ```
-
 const { Role } = require('./route-access-control)
 
 const admin = new Role('admin');
@@ -15,14 +14,11 @@ const student = new Role('student');
 const roleName = new Role('role-name');
 
 ```
-
 ## Check Role
 
 **There are two ways to authorize roles**
-1. Authorizing in the Middleware using  `checkRole`
-2. Authorizing inside route handler function using `isRoleAuthorized`
-
-  
+1. Authorizing in the Middleware
+2. Authorizing inside route handler function
 
 ## 1. Middleware:  `checkRole`
 
@@ -65,7 +61,6 @@ Use this inside your route handler
 *  `isRoleAuthorized(requesterRole, arrayOfAllowedRoles)`
 
 **Example**
-
 ```
 router.post('/protected', checkJwt, async (req, res, next) => {
 	try {
