@@ -1,6 +1,6 @@
 {
 	"name": "route-access-control",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Simple role based access control which you can apply to API endpoints as middlewares or as a function inside handlers.",
 	"main": "index.js",
 	"scripts": {
