@@ -16,6 +16,11 @@
 		"admin",
 		"express"
 	],
+	"homepage": "https://github.com/ashiqsultan/route-access-control",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ashiqsultan/route-access-control"
+	},
 	"author": "ashiqsultan",
 	"license": "MIT"
 }
